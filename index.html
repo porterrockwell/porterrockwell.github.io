@@ -560,7 +560,7 @@
         </div>
     </section>
 
-    <section id="contact">
+<section id="contact">
         <div class="content-box">
             <h2>Get In Touch</h2>
             <p>I'm always interested in hearing about new opportunities and collaborations. Feel free to reach out!</p>
@@ -582,8 +582,23 @@
                     <strong>Location:</strong> 46 W 200 N, Ivins, UT 84738
                 </div>
             </div>
+            
+            <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+                <p style="color: #888; font-size: 0.9rem; cursor: pointer;" onclick="document.getElementById('space-invaders').style.display='block'; this.style.display='none';">
+                    👾 Click here for a surprise...
+                </p>
+            </div>
         </div>
     </section>
+
+    <div id="space-invaders" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: none;">
+        <div style="position: absolute; top: 20px; right: 20px; color: white; font-size: 1.2rem; cursor: pointer;" onclick="document.getElementById('space-invaders').style.display='none'">✕ Close</div>
+        <canvas id="gameCanvas" style="display: block; margin: auto;"></canvas>
+        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; text-align: center;">
+            <p style="margin: 5px;">Arrow Keys: Move | Spacebar: Shoot</p>
+            <p style="margin: 5px; font-size: 1.2rem;">Score: <span id="score">0</span> | Lives: <span id="lives">3</span></p>
+        </div>
+    </div>
 
     <script>
         document.querySelectorAll('nav a').forEach(anchor => {
