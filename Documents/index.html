@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Porter Cook – Engineering Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-image: linear-gradient(135deg, rgba(15, 32, 39, 0.8) 0%, rgba(32, 58, 67, 0.75) 50%, rgba(44, 83, 100, 0.75) 100%), url('Images/robotics_facility_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 32, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(100, 200, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 900px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #0f2027;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #0f2027, #2c5364);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #0f2027;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #2c5364;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #203a43;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #555;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #2c5364, #203a43);
+            color: white;
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(44, 83, 100, 0.3);
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #2c5364;
+            transition: all 0.3s;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .date {
+            color: #2c5364;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border-color: #2c5364;
+        }
+
+        .project-card h3 {
+            color: #0f2027;
+            margin-top: 0;
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            background: #2c5364;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .content-box {
+                padding: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2c5364, #203a43);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 2rem;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(44, 83, 100, 0.4);
+        }
+
+        a.skill-tag {
+            display: block;
+            text-decoration: none;
+        }
+
+        .cert-badge {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.85;
+            margin-top: 0.15rem;
+            text-decoration: underline;
+        }
+
+        .trainer-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .trainer-photos img {
+            width: 100%;
+            margin-bottom: 0;
+            object-fit: cover;
+        }
+
+        .cert-list, .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cert-card, .doc-card, .ref-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            padding: 1.25rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #2c5364;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        a.cert-card:hover, a.doc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .cert-card strong, .doc-card strong, .ref-card strong {
+            color: #0f2027;
+        }
+
+        .cert-card.in-progress {
+            border-left-color: #999;
+        }
+
+        .doc-dl {
+            margin-top: auto;
+            color: #2c5364;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .ref-rel {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#teaching">Teaching</a></li>
+            <li><a href="#educational-projects">Educational Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#school-projects">School Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#documents">Documents</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="content-box">
+            <div style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h1>Porter Cook</h1>
+                    <p class="hero-subtitle">Mechatronics Engineer | Problem Solver | Innovation Enthusiast</p>
+                    <p>Passionate about building scalable solutions and creating impactful technology. Experienced in PLC's, Robotics and Software Development.</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                        <a href="#contact" class="cta-button">Get In Touch</a>
+                        <a href="Documents/Porter_Cook_Resume.pdf" download class="cta-button" style="background: linear-gradient(135deg, #555, #333);">Download Resume (PDF)</a>
+                        <a href="Documents/Porter_Cook_CV.pdf" download class="cta-button" style="background: linear-gradient(135deg, #555, #333);">Download CV (PDF)</a>
+                    </div>
+                </div>
+                <div style="flex: 0 0 250px;">
+                    <img src="Images/porter_cook_headshot_2026.jpg" alt="Porter Cook" style="width: 100%; border-radius: 12px; border: 4px solid #2c5364; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="content-box">
+            <h2>About Me</h2>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
+                <div style="flex: 1; min-width: 280px;">
+                    <p>I'm a Mechatronics Engineer currently serving as a Visiting Instructor of Practice at Utah Tech University, where I teach Industrial Robotics. I bring hands-on experience in industrial automation, robotics, and software development, with expertise in PLC programming, robotic systems, and C# application development — I thrive in environments where innovation meets practical engineering solutions.</p>
+                    <p style="margin-top: 1rem;">My approach combines technical excellence with creative problem-solving, ensuring that every project delivers real value. From designing automated test equipment and building industrial robotics curriculum to programming robotic systems, I'm constantly learning and applying new technologies to create efficient, scalable solutions.</p>
+                </div>
+                <div style="flex: 0 0 200px;">
+                    <img src="https://porterrockwell.github.io/Images/profile-photo.png" alt="Porter Cook" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="content-box">
+            <h2>Professional Experience</h2>
+
+            <div class="experience-item">
+                <h3>Visiting Instructor of Practice</h3>
+                <p class="date">Utah Tech University, Industrial Robotics | April 2026 - Present</p>
+                <ul>
+                    <li>Helped develop a new Industrial Robotics curriculum and restructured the course to teach static and inertial forces, I/O, and Ethernet communication alongside robot programming and operation</li>
+                    <li>Implemented lab safety protocols for student use of industrial robotics equipment</li>
+                    <li>Helped develop a PLC trainer pairing an AutomationDirect P1000 PLC with a FANUC LR Mate 200iD (CRMA58 terminal blocks) to teach group I/O, digital logic, and Ethernet communication</li>
+                    <li>First instructor to introduce FANUC RoboGuide into the curriculum, giving students offline programming and virtual workcell experience</li>
+                    <li>Teaching MTRN 2200 and MTRN 2205 for the first time, building out safe, practical industrial wiring and troubleshooting instruction</li>
+                    <li>Pursuing FANUC CERT Instructor Certification through FANUC America to become a FANUC-certified robotics instructor</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Automation Technician</h3>
+                <p class="date">IME Automation | March 2026 - April 2026</p>
+                <ul>
+                    <li>Gained hands-on skills in end-of-arm tooling and robotic material handling</li>
+                    <li>Contributed to a single automated system project from development through completion, strengthening skills in automation controls, integration, and troubleshooting</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Automation Engineering Intern</h3>
+                <p class="date">Baxter Aerospace | August 2024 - September 2025</p>
+                <ul>
+                    <li>Developed HVX (High Voltage Automated Test) system to test wire harnesses for continuity and perform high voltage testing</li>
+                    <li>Created automated processes including wire testing equipment for Quality Assurance</li>
+                    <li>Integrated PLC control for sensor data collection and process automation</li>
+                    <li>Programmed robots (Yaskawa, Universal Robots, Fanuc) to automate manufacturing processes</li>
+                    <li>Developed C# WPF applications linked to SQL databases for MES system work instructions and assembly lines</li>
+                    <li>Worked in Research and Development for several beta automation projects</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Maker Space Intern</h3>
+                <p class="date">Innovation Plaza, Utah Tech University | August 2022 - May 2023</p>
+                <ul>
+                    <li>Trained individuals to use Laser Engravers, CNCs, and 3D Printers at the Makerspace</li>
+                    <li>Fixed and installed several safety features to machinery such as E-stops and circuit breakers</li>
+                    <li>Worked with individuals to design parts in Fusion 360 and SolidWorks including prosthetics and business-related items</li>
+                    <li>Served as lead operator for the Stinger CNC machine, modified g-code, and created tool paths in Fusion 360</li>
+                    <li>Gained hands-on experience in various software programs, increasing proficiency and expanding technical skill set</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Engineering Intern</h3>
+                <p class="date">Utah Tech University, Engineering Department | 2022</p>
+                <ul>
+                    <li>Worked with Professor Dave Christensen on Engineering Displays and design projects</li>
+                    <li>Designed 3D models using Fusion 360, SolidWorks, and Visio</li>
+                    <li>Brainstormed with Dr. Dave Christensen on different concepts for displays and implementing them into designs</li>
+                    <li>Organized inventory and worked with maintenance on SLA printers and operation for nonessential projects</li>
+                    <li>Created schedules and work plans for engineering projects</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>FSY Counselor</h3>
+                <p class="date">Church of Jesus Christ of Latter-day Saints | May 2022 - August 2022</p>
+                <ul>
+                    <li>In charge of the welfare and safety of FSY attendees</li>
+                    <li>Coordinated and teamed up with co-counselors on lesson plans to provide the best experience possible</li>
+                    <li>Worked with Assistant Counselors and Coordinators to provide housing, food, and event safety</li>
+                    <li>Introduced teachers and speakers before their lesson plans and discussions</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Missionary</h3>
+                <p class="date">Church of Jesus Christ of Latter-day Saints | May 2019 - May 2021</p>
+                <ul>
+                    <li>Taught a group of 12 missionaries how to effectively teach the gospel in Las Vegas</li>
+                    <li>Proselytized in Las Vegas, Nevada, and Accra, Ghana</li>
+                    <li>Monitored team performance, developed and recommended performance improvement plans</li>
+                    <li>Served as Social Media Specialist for local Facebook group, monitored performance and outreach of ads</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="teaching">
+        <div class="content-box">
+            <h2>Teaching</h2>
+
+            <h3>Teaching Philosophy</h3>
+            <p>My teaching philosophy is centered on helping students move from learning individual technical skills to confidently applying those skills in complete engineering systems. My goal is for students to understand not only how to perform a task, but why it is done, how it connects to the larger system, and how they would troubleshoot or adapt that process in a professional environment. I want students to leave my courses with both technical knowledge and the confidence to work independently with unfamiliar equipment, documentation, and engineering problems.</p>
+
+            <p style="margin-top: 1rem;">A major focus of my recent instructional development has been creating a stronger connection between lecture, simulation, laboratory work, and real-world application. In my robotics courses, I have been restructuring the learning sequence so that students first encounter a concept in a practical setting, develop a deeper understanding of the underlying theory and engineering principles, and then apply that knowledge on physical industrial equipment. This approach allows students to immediately see the relevance of topics such as coordinate systems, tool frames, programming, registers, I/O, PLC communication, and system commissioning. I am also placing greater emphasis on the use of technical documentation, troubleshooting, design iteration, and individual competency so that students learn how to find and apply information rather than relying solely on instructor-provided procedures.</p>
+
+            <p style="margin-top: 1rem;">My broader goal is to continue developing courses that increasingly resemble the way engineering work is performed in industry. Students should have opportunities to design components, program and commission equipment, diagnose failures, document their work, and integrate multiple technologies into functioning systems. I am particularly interested in creating project-based experiences where students progress from structured introductory activities toward greater independence and system-level responsibility. Ultimately, I want my teaching to produce students who are curious, technically capable, willing to experiment, and prepared to approach complex engineering systems with a disciplined process of research, testing, troubleshooting, and continuous improvement.</p>
+
+            <p style="margin-top: 1rem;">When I began teaching Industrial Robotics at Utah Tech, I helped develop a new curriculum and restructured the course to teach more of the principles behind robot motion, including static and inertial forces, along with I/O and Ethernet communication. I was also the first instructor to bring FANUC RoboGuide into the course, and I helped develop a PLC trainer so students can practice group I/O, digital logic, and PLC-to-robot Ethernet communication on real hardware (see <a href="#educational-projects">Educational Projects</a>).</p>
+
+            <a href="Documents/Porter_Cook_Teaching_Philosophy.pdf" download class="cta-button" style="margin-top: 1.5rem; padding: 0.7rem 1.5rem;">Download Teaching Philosophy (PDF)</a>
+
+            <h3 style="margin-top: 2.5rem;">Curriculum Development Initiatives</h3>
+
+            <div class="education-item">
+                <h4 style="color: #2c5364; margin-top: 0;">Goal</h4>
+                <p>Enhance the industrial robotics curriculum with robot I/O and PLC integration to provide students with more comprehensive robot training and improve their employability in industrial automation.</p>
+                <h4 style="color: #2c5364; margin-top: 1rem;">Approach</h4>
+                <p>Develop hands-on lab activities that progress from robot I/O and discrete wiring to Ethernet communication and PLC-coordinated robot operation.</p>
+            </div>
+
+            <div class="education-item">
+                <h4 style="color: #2c5364; margin-top: 0;">Goal</h4>
+                <p>Expand the Industrial Robotics curriculum to give students a stronger understanding of complete robotic systems, including setup, tooling, operation, and troubleshooting.</p>
+                <h4 style="color: #2c5364; margin-top: 1rem;">Approach</h4>
+                <p>Develop new lectures and hands-on labs using FANUC technical resources that emphasize end-of-arm tooling, robot setup, fault recovery, and system-level troubleshooting.</p>
+            </div>
+
+            <div class="education-item">
+                <h4 style="color: #2c5364; margin-top: 0;">Goal</h4>
+                <p>Integrate FANUC RoboGuide into the robotics curriculum so students gain experience with offline programming and virtual system design while developing skills used in industrial robot integration.</p>
+                <h4 style="color: #2c5364; margin-top: 1rem;">Approach</h4>
+                <p>Develop RoboGuide labs that let students build, program, test, and troubleshoot virtual workcells before using the physical robots. This gives students more opportunities to practice and iterate, makes physical lab time more productive, and allows more advanced robotic applications to be explored without requiring additional hardware.</p>
+            </div>
+
+            <div class="education-item">
+                <h4 style="color: #2c5364; margin-top: 0;">Goal</h4>
+                <p>Successfully teach MTRN 2200 and MTRN 2205 for the first time while building a strong understanding of the curriculum and ensuring students develop safe, practical industrial wiring and troubleshooting skills.</p>
+                <h4 style="color: #2c5364; margin-top: 1rem;">Approach</h4>
+                <p>Follow and evaluate the existing course structure, equipment, labs, and assessments while identifying where students struggle. Use those observations to improve lectures, demonstrations, lab instructions, and assessments for future semesters.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="educational-projects">
+        <div class="content-box">
+            <h2>Educational Projects</h2>
+            <p>Hands-on teaching equipment and learning resources for the Industrial Robotics course at Utah Tech University.</p>
+
+            <div class="project-grid" style="grid-template-columns: 1fr;">
+                <div class="project-card" style="cursor: default;">
+                    <h3>PLC / Robot Ethernet Trainer: AutomationDirect P1000 &amp; FANUC LR Mate 200iD</h3>
+                    <div class="trainer-photos">
+                        <img src="Images/FANUC_PLCTRAINER1.jpeg" alt="PLC and FANUC LR Mate 200iD trainer, photo 1">
+                        <img src="Images/FANUC_PLCTRAINER2.jpeg" alt="PLC and FANUC LR Mate 200iD trainer, photo 2">
+                    </div>
+                    <p>A hands-on trainer that pairs an AutomationDirect P1000 PLC with a FANUC LR Mate 200iD robot through CRMA58 terminal blocks. Students learn how a PLC and a robot controller exchange signals and data, using the same kind of hardware found in industrial automation. I helped develop this trainer as part of the restructured Industrial Robotics curriculum.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Group I/O</span>
+                        <span class="tech-badge">Digital Logic</span>
+                        <span class="tech-badge">Ethernet Communication</span>
+                        <span class="tech-badge">AutomationDirect P1000</span>
+                        <span class="tech-badge">FANUC LR Mate 200iD</span>
+                        <span class="tech-badge">CRMA58 Terminal Blocks</span>
+                    </div>
+                    <ul style="margin-top: 1rem;">
+                        <li>Group I/O between a PLC and a FANUC robot, wired through CRMA58 terminal blocks</li>
+                        <li>Digital logic for coordinating a PLC and a robot controller</li>
+                        <li>Ethernet communication between the PLC and the robot controller</li>
+                        <li>Practice on real industrial hardware used in automation and manufacturing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="content-box">
+            <h2>Technical Skills</h2>
+            
+            <h3>PLC & Automation</h3>
+            <div class="skill-grid">
+                <div class="skill-tag">Ladder Logic</div>
+                <div class="skill-tag">Structured Text</div>
+                <a class="skill-tag has-cert" href="Certifications/BECKHOFF_CERT.pdf" target="_blank" rel="noopener" title="View Beckhoff TwinCAT 3 certificate">Beckhoff PLC<span class="cert-badge">View certificate</span></a>
+                <a class="skill-tag has-cert" href="Certifications/BECKHOFF_CERT.pdf" target="_blank" rel="noopener" title="View Beckhoff TwinCAT 3 certificate">TwinCAT 3<span class="cert-badge">View certificate</span></a>
+                <div class="skill-tag">Productivity Suite</div>
+                <div class="skill-tag">SCADA</div>
+                <div class="skill-tag">Industrial Wiring</div>
+                <div class="skill-tag">Group I/O</div>
+                <div class="skill-tag">Digital Logic</div>
+                <div class="skill-tag">Ethernet Communication</div>
+            </div>
+
+            <h3>Robotics Programming</h3>
+            <div class="skill-grid">
+                <div class="skill-tag">Yaskawa</div>
+                <div class="skill-tag">Universal Robots</div>
+                <a class="skill-tag has-cert" href="Certifications/FANUC_CERT.pdf" target="_blank" rel="noopener" title="View FANUC HandlingTool certificate">Fanuc<span class="cert-badge">View certificate</span></a>
+                <a class="skill-tag has-cert" href="Certifications/FANUC_CERT.pdf" target="_blank" rel="noopener" title="View FANUC HandlingTool certificate">FANUC HandlingTool<span class="cert-badge">View certificate</span></a>
+                <div class="skill-tag">FANUC RoboGuide</div>
+                <div class="skill-tag">Robot Control Systems</div>
+            </div>
+
+            <h3>Programming Languages</h3>
+            <div class="skill-grid">
+                <div class="skill-tag">C#</div>
+                <div class="skill-tag">C++</div>
+                <div class="skill-tag">SQL</div>
+                <div class="skill-tag">HTML</div>
+                <div class="skill-tag">Python</div>
+            </div>
+
+            <h3>CAD & Design Software</h3>
+            <div class="skill-grid">
+                <div class="skill-tag">AutoCAD Electrical</div>
+                <div class="skill-tag">Fusion 360</div>
+                <div class="skill-tag">SolidWorks</div>
+                <div class="skill-tag">Onshape</div>
+                <div class="skill-tag">FeatureScript</div>
+                <div class="skill-tag">Visio</div>
+                <div class="skill-tag">CAD/CAM</div>
+            </div>
+
+            <h3>Software Development</h3>
+            <div class="skill-grid">
+                <div class="skill-tag">WPF Applications</div>
+                <div class="skill-tag">SQL Databases</div>
+            </div>
+
+            <h3>Core Competencies</h3>
+            <div class="skill-grid">
+                <div class="skill-tag">Problem-Solving</div>
+                <div class="skill-tag">Teamwork</div>
+                <div class="skill-tag">Attention to Detail</div>
+                <div class="skill-tag">Creative Solutions</div>
+                <div class="skill-tag">Hard Working</div>
+            </div>
+
+            <h3 id="certifications">Certifications &amp; Training</h3>
+            <p style="margin-bottom: 1rem;">Click a certificate to view the PDF.</p>
+            <!-- To add a new certificate: upload the PDF to the Certifications folder, then copy one of the cards below and change the name, title, date and file link. -->
+            <div class="cert-list">
+                <a class="cert-card" href="Certifications/FANUC_CERT.pdf" target="_blank" rel="noopener">
+                    <strong>FANUC Academy</strong>
+                    <span>HandlingTool Operations &amp; Programming (4 Days, Virtual)</span>
+                    <span class="date">May 21, 2026 &middot; View certificate</span>
+                </a>
+                <a class="cert-card" href="Certifications/BECKHOFF_CERT.pdf" target="_blank" rel="noopener">
+                    <strong>Beckhoff E-Learning</strong>
+                    <span>TwinCAT 3: Getting Started</span>
+                    <span class="date">May 15, 2024 &middot; View certificate</span>
+                </a>
+                <a class="cert-card" href="Certifications/Certificate%20of%20Participation%20New%20Faculty%20Seminar%20.pdf" target="_blank" rel="noopener">
+                    <strong>New Faculty Seminar</strong>
+                    <span>Certificate of Participation</span>
+                    <span class="date">View certificate</span>
+                </a>
+                <div class="cert-card in-progress">
+                    <strong>FANUC CERT Instructor Certification</strong>
+                    <span>FANUC America</span>
+                    <span class="date">In progress</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="content-box">
+            <h2>Professional Projects</h2>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="https://porterrockwell.github.io/Images/hvx_shadow.png" alt="HVX High Voltage Test System">
+                    <h3>HVX High Voltage Automated Test System</h3>
+                    <p>Developed an automated test system at Baxter Aerospace that senses wire harnesses to check for continuity and performs high voltage testing. The system integrates PLC control with custom test sequences to ensure quality and safety in aerospace wire harness manufacturing.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">PLC Programming</span>
+                        <span class="tech-badge">C# WPF</span>
+                        <span class="tech-badge">SQL Database</span>
+                        <span class="tech-badge">Industrial Automation</span>
+                        <span class="tech-badge">Quality Assurance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="school-projects">
+        <div class="content-box">
+            <h2>School Projects</h2>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="Images/lovesac_cad_render.png" alt="Lovesac Material Dispensing System CAD Assembly">
+                    <h3>Lovesac Material Dispensing System - Senior Capstone</h3>
+                    <p>A tough controls problem: accurately and consistently moving and dispensing a material that really didn't want to move. Getting reliable, repeatable output meant working through a lot of challenges with system behavior, variability, and control tuning. This project let me focus in on the controls side of engineering, pushing me to think differently and apply classroom theory in a real, hands-on way. Completed in partnership with Lovesac through Utah Tech University.</p>
+                    <p style="margin-top: 0.75rem;">On this project I owned the electrical and controls side end-to-end: I designed the HMI, wrote the ladder logic, and handled the panel wiring and every other electrical aspect of the build.</p>
+
+                    <div style="margin: 1.25rem 0;">
+                        <img src="Images/lovesac_wiring_diagram.png" alt="Main Enclosure Electrical Panel Wiring Diagram" style="width: 100%; border-radius: 10px; border: 1px solid #ddd;">
+                        <p style="font-size: 0.85rem; color: #777; margin-top: 0.4rem;">Main enclosure panel layout I designed — AC voltage and 24VDC terminal zones, PLC control wiring, and dual VFD/brake-resistor drive bays.</p>
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-badge">Controls Engineering</span>
+                        <span class="tech-badge">PLC Programming</span>
+                        <span class="tech-badge">Ladder Logic</span>
+                        <span class="tech-badge">HMI Design</span>
+                        <span class="tech-badge">Panel Wiring</span>
+                        <span class="tech-badge">Control Tuning</span>
+                        <span class="tech-badge">Industrial Automation</span>
+                        <span class="tech-badge">Surrogate Modeling</span>
+                        <span class="tech-badge">Industry Partnership</span>
+                    </div>
+
+                    <ul style="margin-top: 1rem;">
+                        <li>Designed and tuned a control system to reliably dispense a material with highly variable, uncooperative flow behavior</li>
+                        <li>Designed the HMI and wrote the ladder logic that drives the dispensing sequence</li>
+                        <li>Designed and wired the main electrical enclosure, including AC/24VDC power distribution, PLC I/O, and dual VFD drive bays with dynamic braking resistors</li>
+                        <li>Diagnosed and worked through challenges in system behavior and process variability to achieve repeatable output</li>
+                        <li>Collaborated directly with Lovesac through a Utah Tech University capstone partnership</li>
+                        <li>Applied controls theory to a real, hands-on industrial dispensing problem</li>
+                    </ul>
+
+                    <div style="margin: 1.25rem 0;">
+                        <div style="position: relative; width: 100%; padding-top: 56.25%; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
+                            <iframe src="https://www.youtube.com/embed/wslQLR-cnDg" title="Lovesac Material Dispensing System Demo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <p style="font-size: 0.85rem; color: #777; margin-top: 0.4rem;">Demo of the material dispensing system in action.</p>
+                    </div>
+
+                    <h4 style="margin-top: 1.5rem; color: #203a43;">Process Optimization &amp; Surrogate Modeling</h4>
+                    <p>Dispense weight depends on motor frequency (Hz) and run time, but the relationship is nonlinear and noisy in practice. To find repeatable settings for any target weight, I collected paired (time, Hz, weight) trial data and trained two surrogate models to predict dispensed weight from process settings: a degree-2 polynomial regression (RMSE 0.346 lbs) and a small neural network, 4→16→16→1 (RMSE 0.303 lbs). I then inverted the fitted relationship into a closed-form estimate, Time (ms) ≈ 10,140 × lbs<sup>0.894</sup>, and used the models' surrogate surfaces to search for the frequency/time pair that hits each target weight with minimum predicted error.</p>
+
+                    <div style="overflow-x: auto; margin-top: 1rem;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="background: #2c5364; color: white;">
+                                    <th style="padding: 0.5rem; text-align: left;">Target (lbs)</th>
+                                    <th style="padding: 0.5rem; text-align: left;">Model</th>
+                                    <th style="padding: 0.5rem; text-align: left;">Time (ms)</th>
+                                    <th style="padding: 0.5rem; text-align: left;">Hz</th>
+                                    <th style="padding: 0.5rem; text-align: left;">Predicted (lbs)</th>
+                                    <th style="padding: 0.5rem; text-align: left;">Error (lbs)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 0.5rem;">1.0</td>
+                                    <td style="padding: 0.5rem;">Neural Net</td>
+                                    <td style="padding: 0.5rem;">10,370</td>
+                                    <td style="padding: 0.5rem;">4500</td>
+                                    <td style="padding: 0.5rem;">0.955</td>
+                                    <td style="padding: 0.5rem;">0.045</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem;">2.0</td>
+                                    <td style="padding: 0.5rem;">Neural Net</td>
+                                    <td style="padding: 0.5rem;">17,628</td>
+                                    <td style="padding: 0.5rem;">4500</td>
+                                    <td style="padding: 0.5rem;">1.969</td>
+                                    <td style="padding: 0.5rem;">0.031</td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 0.5rem;">5.0</td>
+                                    <td style="padding: 0.5rem;">Neural Net</td>
+                                    <td style="padding: 0.5rem;">36,827</td>
+                                    <td style="padding: 0.5rem;">3000</td>
+                                    <td style="padding: 0.5rem;">4.980</td>
+                                    <td style="padding: 0.5rem;">0.020</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem;">8.0</td>
+                                    <td style="padding: 0.5rem;">Poly Regression</td>
+                                    <td style="padding: 0.5rem;">65,145</td>
+                                    <td style="padding: 0.5rem;">4500</td>
+                                    <td style="padding: 0.5rem;">7.967</td>
+                                    <td style="padding: 0.5rem;">0.033</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #777; margin-top: 0.5rem;">All four optimized settings (Accel/Decel = 1.0s) landed within 0.05 lbs of their target weight.</p>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://porterrockwell.github.io/Images/fire_knife.png" alt="Fire Knife">
+                    <h3>Fire Knife - Additive Manufacturing Final Project</h3>
+                    <p>Created a functional fire knife using additive manufacturing techniques. The knife uses a butane cartridge with a custom-built valve to control gas flow. Inspired by CO2 diver knives, this project combined principles of both stove design and folding knife mechanisms.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">SolidWorks</span>
+                        <span class="tech-badge">CNC Machining</span>
+                        <span class="tech-badge">Additive Manufacturing</span>
+                        <span class="tech-badge">CAD Design</span>
+                    </div>
+                    <ul style="margin-top: 1rem;">
+                        <li>Designed complete assembly in SolidWorks with Bill of Materials</li>
+                        <li>Manufactured internal retainer using CNC with keyway tool for retaining rings</li>
+                        <li>Created custom valve body with exploded view documentation</li>
+                        <li>Combined folding knife and stove design principles</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://porterrockwell.github.io/Images/AR4_Robot.png" alt="AR4 Robotic Arm">
+                    <h3>AR4 6-Axis Robotic Arm - Systems Design Final</h3>
+                    <p>Designed and built a complete 6-axis robotic arm system showcasing principles from System Design class. The robot runs on a Teensy 4.1 board with PLC control integration, featuring both standalone and PLC-triggered operation modes.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Fusion 360</span>
+                        <span class="tech-badge">PLC Control</span>
+                        <span class="tech-badge">Teensy 4.1</span>
+                        <span class="tech-badge">Motor Control</span>
+                        <span class="tech-badge">Robotics</span>
+                    </div>
+                    <ul style="margin-top: 1rem;">
+                        <li>Complete assembly design in Fusion 360</li>
+                        <li>Integrated Teensy 4.1 as main onboard controller</li>
+                        <li>Implemented dual control modes: PLC discrete output and Teensy interface</li>
+                        <li>Designed control cabinet for AMC motor control integration</li>
+                        <li>Pre-programmed motion sequences triggered by PLC</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://porterrockwell.github.io/Images/PLC_Cabinet.png" alt="PLC Cabinet">
+                    <h3>PLC Cabinet - Programmable Logic Controllers Final</h3>
+                    <p>Constructed a comprehensive PLC training cabinet from blueprints to simulate industrial work environments. The cabinet integrates P3000 PLCs, safety relays, HMI screens, motion controllers, and various industrial sensors for hands-on learning.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">PLC Programming</span>
+                        <span class="tech-badge">Industrial Wiring</span>
+                        <span class="tech-badge">HMI Interface</span>
+                        <span class="tech-badge">Safety Systems</span>
+                        <span class="tech-badge">SCADA</span>
+                    </div>
+                    <ul style="margin-top: 1rem;">
+                        <li>Constructed cabinet with P3000 PLCs, safety relays, and pilot lights</li>
+                        <li>Integrated Ethernet junction boxes and HMI screens</li>
+                        <li>Installed solid state relays, electromagnetic relays, and high-speed encoders</li>
+                        <li>Wired motion controllers and NPN/PNP sensors</li>
+                        <li>Referenced specification sheets for proper component integration without supervision</li>
+                        <li>Simulated real industrial work environment as lead Mechatronic Engineer</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://porterrockwell.github.io/Images/Personal_PLC_Cabinet.png" alt="Personal PLC Cabinet">
+                    <h3>Personal PLC Cabinet - Independent Project</h3>
+                    <p>Designed and built a personal PLC testing cabinet for prototyping automated systems. Features both Direct Logic 05 fixed PLC and Direct Logic 205 modular PLC to understand different PLC architectures and interfaces.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Direct Logic PLCs</span>
+                        <span class="tech-badge">Cabinet Design</span>
+                        <span class="tech-badge">Automation Testing</span>
+                        <span class="tech-badge">Prototyping</span>
+                    </div>
+                    <ul style="margin-top: 1rem;">
+                        <li>Custom cabinet design for personal automation projects</li>
+                        <li>Integrated Direct Logic 05 Koyo fixed PLC</li>
+                        <li>Installed Direct Logic 205 modular PLC</li>
+                        <li>Created test environment for prototype automation ideas</li>
+                        <li>Learned differences between fixed and modular PLC interfaces</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="content-box">
+            <h2>Education</h2>
+            
+            <div class="education-item">
+                <h3>Bachelor of Science in Mechatronics Engineering</h3>
+                <p class="date">Utah Tech University - St. George, UT</p>
+                <p style="margin-top: 0.5rem;"><strong>Relevant Coursework:</strong> Industrial Networking, SCADA, Industrial Wiring, Robotics, Programmable Logic Controllers, Computer Aided Manufacturing, Computer Aided Design, Ladder Logic, Systems Design, Additive Manufacturing</p>
+            </div>
+
+            <div class="education-item">
+                <h3>Associate of Science in Pre-Engineering</h3>
+                <p class="date">Utah Tech University - St. George, UT | May 2023</p>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Certifications</h3>
+            <ul>
+                <li><a href="Certifications/BECKHOFF_CERT.pdf" target="_blank" rel="noopener">Beckhoff E-Learning: TwinCAT 3: Getting Started (May 2024)</a></li>
+                <li><a href="Certifications/FANUC_CERT.pdf" target="_blank" rel="noopener">FANUC Academy: HandlingTool Operations &amp; Programming (May 2026)</a></li>
+            </ul>
+        </div>
+    </section>
+
+<section id="documents">
+        <div class="content-box">
+            <h2>Documents</h2>
+            <p>Download my professional documents as PDFs.</p>
+
+            <div class="doc-grid">
+                <a class="doc-card" href="Documents/Porter_Cook_Resume.pdf" download>
+                    <strong>Resume</strong>
+                    <span>One-page summary of experience, projects, and skills</span>
+                    <span class="doc-dl">Download PDF</span>
+                </a>
+                <a class="doc-card" href="Documents/Porter_Cook_CV.pdf" download>
+                    <strong>Curriculum Vitae</strong>
+                    <span>Full professional and academic history</span>
+                    <span class="doc-dl">Download PDF</span>
+                </a>
+                <a class="doc-card" href="Documents/Porter_Cook_Cover_Letter.pdf" download>
+                    <strong>Cover Letter</strong>
+                    <span>Introduction and summary of qualifications</span>
+                    <span class="doc-dl">Download PDF</span>
+                </a>
+                <a class="doc-card" href="Documents/Porter_Cook_Teaching_Philosophy.pdf" download>
+                    <strong>Teaching Philosophy</strong>
+                    <span>Approach to teaching industrial robotics and automation</span>
+                    <span class="doc-dl">Download PDF</span>
+                </a>
+            </div>
+
+            <h3 id="references" style="margin-top: 2.5rem;">References</h3>
+            <p>Contact information for each reference is available on request.</p>
+            <div class="doc-grid">
+                <div class="ref-card">
+                    <strong>Seth Reed</strong>
+                    <span>Head Engineer, Project Dragonfly<br>Baxter Aerospace</span>
+                    <span class="ref-rel">Supervising engineer while I worked at Baxter Aerospace as a wiring technician and on automation systems.</span>
+                </div>
+                <div class="ref-card">
+                    <strong>Baylee S. Schumacher</strong>
+                    <span>Engineering Classmate and Project Partner<br>Utah Tech University</span>
+                    <span class="ref-rel">Project partner on final-course engineering work, including a BLDC motor for our regatta competition.</span>
+                </div>
+                <div class="ref-card">
+                    <strong>Chayse Thompson</strong>
+                    <span>Senior Capstone Partner, Mechanical Engineering<br>Utah Tech University</span>
+                    <span class="ref-rel">Mechanical engineering partner on my senior capstone project.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="contact">
+        <div class="content-box">
+            <h2>Get In Touch</h2>
+            <p>I'm always interested in hearing about new opportunities and collaborations. Feel free to reach out!</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Email:</strong> porterrockswell@gmail.com
+                </div>
+                <div class="contact-item">
+                    <strong>Phone:</strong> (435) 272-5708
+                </div>
+                <div class="contact-item">
+                    <strong>LinkedIn:</strong> linkedin.com/in/porterrockwell
+                </div>
+                <div class="contact-item">
+                    <strong>GitHub:</strong> github.com/porterrockwell
+                </div>
+                <div class="contact-item">
+                    <strong>Location:</strong> Ivins, UT
+                </div>
+            </div>
+            
+             <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+                <button onclick="startGame()" style="background: none; border: none; color: #888; font-size: 0.9rem; cursor: pointer; padding: 10px;">
+                    👾 Click here for a surprise...
+                </button>
+            </div>
+        </div>
+    </section>
+
+ <div id="space-invaders" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000;">
+        <div style="position: absolute; top: 20px; right: 20px; color: white; font-size: 1.2rem; cursor: pointer;" onclick="closeGame()">✕ Close</div>
+        <canvas id="gameCanvas" style="display: block; margin: auto;"></canvas>
+        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; text-align: center;">
+            <p style="margin: 5px;">Arrow Keys: Move | Spacebar: Shoot</p>
+            <p style="margin: 5px; font-size: 1.2rem;">Score: <span id="score">0</span> | Lives: <span id="lives">3</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Game variables
+        let canvas, ctx;
+        let player, aliens, bullets, alienBullets;
+        let score = 0;
+        let lives = 3;
+        let gameRunning = false;
+        let keys = {};
+        let alienDirection = 1;
+        let alienSpeed = 1;
+
+        function startGame() {
+            document.getElementById('space-invaders').style.display = 'block';
+            canvas = document.getElementById('gameCanvas');
+            canvas.width = 800;
+            canvas.height = 600;
+            ctx = canvas.getContext('2d');
+            
+            initGame();
+            gameRunning = true;
+            gameLoop();
+        }
+
+        function closeGame() {
+            gameRunning = false;
+            document.getElementById('space-invaders').style.display = 'none';
+        }
+
+        function initGame() {
+            player = { x: 375, y: 550, width: 50, height: 30, speed: 5 };
+            bullets = [];
+            alienBullets = [];
+            aliens = [];
+            score = 0;
+            lives = 3;
+            alienDirection = 1;
+            alienSpeed = 1;
+
+            for (let row = 0; row < 4; row++) {
+                for (let col = 0; col < 8; col++) {
+                    aliens.push({
+                        x: col * 80 + 80,
+                        y: row * 60 + 50,
+                        width: 40,
+                        height: 30,
+                        alive: true
+                    });
+                }
+            }
+
+            updateScore();
+        }
+
+        function gameLoop() {
+            if (!gameRunning) return;
+
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Move player
+            if (keys['ArrowLeft'] && player.x > 0) player.x -= player.speed;
+            if (keys['ArrowRight'] && player.x < canvas.width - player.width) player.x += player.speed;
+
+            // Draw player
+            ctx.fillStyle = '#0f0';
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+
+            // Move and draw bullets
+            bullets = bullets.filter(b => {
+                b.y -= 7;
+                ctx.fillStyle = '#ff0';
+                ctx.fillRect(b.x, b.y, 3, 10);
+                return b.y > 0;
+            });
+
+            // Move aliens
+            let hitEdge = false;
+            aliens.forEach(a => {
+                if (a.alive) {
+                    if (a.x <= 0 || a.x >= canvas.width - a.width) hitEdge = true;
+                }
+            });
+
+            if (hitEdge) {
+                alienDirection *= -1;
+                aliens.forEach(a => { if (a.alive) a.y += 20; });
+            }
+
+            aliens.forEach(a => {
+                if (a.alive) a.x += alienDirection * alienSpeed;
+            });
+
+            // Draw aliens
+            aliens.forEach(a => {
+                if (a.alive) {
+                    ctx.fillStyle = '#f0f';
+                    ctx.fillRect(a.x, a.y, a.width, a.height);
+                }
+            });
+
+            // Alien shooting
+            if (Math.random() < 0.02) {
+                const aliveAliens = aliens.filter(a => a.alive);
+                if (aliveAliens.length > 0) {
+                    const shooter = aliveAliens[Math.floor(Math.random() * aliveAliens.length)];
+                    alienBullets.push({ x: shooter.x + shooter.width / 2, y: shooter.y + shooter.height });
+                }
+            }
+
+            // Move and draw alien bullets
+            alienBullets = alienBullets.filter(b => {
+                b.y += 4;
+                ctx.fillStyle = '#f00';
+                ctx.fillRect(b.x, b.y, 3, 10);
+                
+                // Check collision with player
+                if (b.x > player.x && b.x < player.x + player.width &&
+                    b.y > player.y && b.y < player.y + player.height) {
+                    lives--;
+                    updateScore();
+                    if (lives <= 0) {
+                        alert('Game Over! Score: ' + score);
+                        closeGame();
+                    }
+                    return false;
+                }
+                return b.y < canvas.height;
+            });
+
+            // Collision detection
+            bullets.forEach((b, bi) => {
+                aliens.forEach((a, ai) => {
+                    if (a.alive && b.x > a.x && b.x < a.x + a.width &&
+                        b.y > a.y && b.y < a.y + a.height) {
+                        a.alive = false;
+                        bullets.splice(bi, 1);
+                        score += 10;
+                        updateScore();
+                    }
+                });
+            });
+
+            // Check win condition
+            if (aliens.every(a => !a.alive)) {
+                alert('You Win! Score: ' + score);
+                initGame();
+            }
+
+            // Check lose condition
+            if (aliens.some(a => a.alive && a.y > 520)) {
+                alert('Game Over! Aliens reached Earth! Score: ' + score);
+                closeGame();
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        function updateScore() {
+            document.getElementById('score').textContent = score;
+            document.getElementById('lives').textContent = lives;
+        }
+
+        document.addEventListener('keydown', e => {
+            keys[e.key] = true;
+            if (e.key === ' ' && gameRunning) {
+                e.preventDefault();
+                bullets.push({ x: player.x + player.width / 2, y: player.y });
+            }
+        });
+
+        document.addEventListener('keyup', e => {
+            keys[e.key] = false;
+        });
+    </script>
+</body>
+</html>
