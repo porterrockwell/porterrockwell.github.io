@@ -268,6 +268,78 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(44, 83, 100, 0.4);
         }
+
+        a.skill-tag {
+            display: block;
+            text-decoration: none;
+        }
+
+        .cert-badge {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.85;
+            margin-top: 0.15rem;
+            text-decoration: underline;
+        }
+
+        .trainer-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .trainer-photos img {
+            width: 100%;
+            margin-bottom: 0;
+            object-fit: cover;
+        }
+
+        .cert-list, .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cert-card, .doc-card, .ref-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            padding: 1.25rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #2c5364;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        a.cert-card:hover, a.doc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .cert-card strong, .doc-card strong, .ref-card strong {
+            color: #0f2027;
+        }
+
+        .cert-card.in-progress {
+            border-left-color: #999;
+        }
+
+        .doc-dl {
+            margin-top: auto;
+            color: #2c5364;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .ref-rel {
+            font-size: 0.9rem;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -277,10 +349,12 @@
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#teaching">Teaching</a></li>
+            <li><a href="#educational-projects">Educational Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#school-projects">School Projects</a></li>
             <li><a href="#education">Education</a></li>
+            <li><a href="#documents">Documents</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -294,7 +368,8 @@
                     <p>Passionate about building scalable solutions and creating impactful technology. Experienced in PLC's, Robotics and Software Development.</p>
                     <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
                         <a href="#contact" class="cta-button">Get In Touch</a>
-                        <a href="https://porterrockwell.github.io/path-to-your-resume.pdf" download class="cta-button" style="background: linear-gradient(135deg, #555, #333);">Download PDF Version of Resume</a>
+                        <a href="Documents/Porter_Cook_Resume.pdf" download class="cta-button" style="background: linear-gradient(135deg, #555, #333);">Download Resume (PDF)</a>
+                        <a href="Documents/Porter_Cook_CV.pdf" download class="cta-button" style="background: linear-gradient(135deg, #555, #333);">Download CV (PDF)</a>
                     </div>
                 </div>
                 <div style="flex: 0 0 250px;">
@@ -327,9 +402,9 @@
                 <h3>Visiting Instructor of Practice</h3>
                 <p class="date">Utah Tech University, Industrial Robotics | April 2026 - Present</p>
                 <ul>
-                    <li>Built a brand-new curriculum for the Industrial Robotics course, including all new labs and lectures</li>
+                    <li>Helped develop a new Industrial Robotics curriculum and restructured the course to teach static and inertial forces, I/O, and Ethernet communication alongside robot programming and operation</li>
                     <li>Implemented lab safety protocols for student use of industrial robotics equipment</li>
-                    <li>Designed backplanes and developed training for the department's FANUC IR Mate industrial robots</li>
+                    <li>Helped develop a PLC trainer pairing an AutomationDirect P1000 PLC with a FANUC LR Mate 200iD (CRMA58 terminal blocks) to teach group I/O, digital logic, and Ethernet communication</li>
                     <li>First instructor to introduce FANUC RoboGuide into the curriculum, giving students offline programming and virtual workcell experience</li>
                     <li>Teaching MTRN 2200 and MTRN 2205 for the first time, building out safe, practical industrial wiring and troubleshooting instruction</li>
                     <li>Pursuing FANUC CERT Instructor Certification through FANUC America to become a FANUC-certified robotics instructor</li>
@@ -340,7 +415,7 @@
                 <h3>Automation Technician</h3>
                 <p class="date">IME Automation | March 2026 - April 2026</p>
                 <ul>
-                    <li>Earned FANUC Tool Handling certification, gaining hands-on skills in end-of-arm tooling and robotic material handling</li>
+                    <li>Gained hands-on skills in end-of-arm tooling and robotic material handling</li>
                     <li>Contributed to a single automated system project from development through completion, strengthening skills in automation controls, integration, and troubleshooting</li>
                 </ul>
             </div>
@@ -372,9 +447,9 @@
 
             <div class="experience-item">
                 <h3>Engineering Intern</h3>
-                <p class="date">Utah Tech University, Engineering Department | June 2022 - May 2022</p>
+                <p class="date">Utah Tech University, Engineering Department | 2022</p>
                 <ul>
-                    <li>Worked with Professor Dave Christiansen on Engineering Displays and design projects</li>
+                    <li>Worked with Professor Dave Christensen on Engineering Displays and design projects</li>
                     <li>Designed 3D models using Fusion 360, SolidWorks, and Visio</li>
                     <li>Brainstormed with Dr. Dave Christensen on different concepts for displays and implementing them into designs</li>
                     <li>Organized inventory and worked with maintenance on SLA printers and operation for nonessential projects</li>
@@ -417,6 +492,10 @@
 
             <p style="margin-top: 1rem;">My broader goal is to continue developing courses that increasingly resemble the way engineering work is performed in industry. Students should have opportunities to design components, program and commission equipment, diagnose failures, document their work, and integrate multiple technologies into functioning systems. I am particularly interested in creating project-based experiences where students progress from structured introductory activities toward greater independence and system-level responsibility. Ultimately, I want my teaching to produce students who are curious, technically capable, willing to experiment, and prepared to approach complex engineering systems with a disciplined process of research, testing, troubleshooting, and continuous improvement.</p>
 
+            <p style="margin-top: 1rem;">When I began teaching Industrial Robotics at Utah Tech, I helped develop a new curriculum and restructured the course to teach more of the principles behind robot motion, including static and inertial forces, along with I/O and Ethernet communication. I was also the first instructor to bring FANUC RoboGuide into the course, and I helped develop a PLC trainer so students can practice group I/O, digital logic, and PLC-to-robot Ethernet communication on real hardware (see <a href="#educational-projects">Educational Projects</a>).</p>
+
+            <a href="Documents/Porter_Cook_Teaching_Philosophy.pdf" download class="cta-button" style="margin-top: 1.5rem; padding: 0.7rem 1.5rem;">Download Teaching Philosophy (PDF)</a>
+
             <h3 style="margin-top: 2.5rem;">Curriculum Development Initiatives</h3>
 
             <div class="education-item">
@@ -449,6 +528,38 @@
         </div>
     </section>
 
+    <section id="educational-projects">
+        <div class="content-box">
+            <h2>Educational Projects</h2>
+            <p>Hands-on teaching equipment and learning resources for the Industrial Robotics course at Utah Tech University.</p>
+
+            <div class="project-grid" style="grid-template-columns: 1fr;">
+                <div class="project-card" style="cursor: default;">
+                    <h3>PLC / Robot Ethernet Trainer: AutomationDirect P1000 &amp; FANUC LR Mate 200iD</h3>
+                    <div class="trainer-photos">
+                        <img src="Images/FANUC_PLCTRAINER1.jpeg" alt="PLC and FANUC LR Mate 200iD trainer, photo 1">
+                        <img src="Images/FANUC_PLCTRAINER2.jpeg" alt="PLC and FANUC LR Mate 200iD trainer, photo 2">
+                    </div>
+                    <p>A hands-on trainer that pairs an AutomationDirect P1000 PLC with a FANUC LR Mate 200iD robot through CRMA58 terminal blocks. Students learn how a PLC and a robot controller exchange signals and data, using the same kind of hardware found in industrial automation. I helped develop this trainer as part of the restructured Industrial Robotics curriculum.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Group I/O</span>
+                        <span class="tech-badge">Digital Logic</span>
+                        <span class="tech-badge">Ethernet Communication</span>
+                        <span class="tech-badge">AutomationDirect P1000</span>
+                        <span class="tech-badge">FANUC LR Mate 200iD</span>
+                        <span class="tech-badge">CRMA58 Terminal Blocks</span>
+                    </div>
+                    <ul style="margin-top: 1rem;">
+                        <li>Group I/O between a PLC and a FANUC robot, wired through CRMA58 terminal blocks</li>
+                        <li>Digital logic for coordinating a PLC and a robot controller</li>
+                        <li>Ethernet communication between the PLC and the robot controller</li>
+                        <li>Practice on real industrial hardware used in automation and manufacturing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="skills">
         <div class="content-box">
             <h2>Technical Skills</h2>
@@ -457,17 +568,23 @@
             <div class="skill-grid">
                 <div class="skill-tag">Ladder Logic</div>
                 <div class="skill-tag">Structured Text</div>
-                <div class="skill-tag">Beckhoff PLC</div>
+                <a class="skill-tag has-cert" href="Certifications/BECKHOFF_CERT.pdf" target="_blank" rel="noopener" title="View Beckhoff TwinCAT 3 certificate">Beckhoff PLC<span class="cert-badge">View certificate</span></a>
+                <a class="skill-tag has-cert" href="Certifications/BECKHOFF_CERT.pdf" target="_blank" rel="noopener" title="View Beckhoff TwinCAT 3 certificate">TwinCAT 3<span class="cert-badge">View certificate</span></a>
                 <div class="skill-tag">Productivity Suite</div>
                 <div class="skill-tag">SCADA</div>
                 <div class="skill-tag">Industrial Wiring</div>
+                <div class="skill-tag">Group I/O</div>
+                <div class="skill-tag">Digital Logic</div>
+                <div class="skill-tag">Ethernet Communication</div>
             </div>
 
             <h3>Robotics Programming</h3>
             <div class="skill-grid">
                 <div class="skill-tag">Yaskawa</div>
                 <div class="skill-tag">Universal Robots</div>
-                <div class="skill-tag">Fanuc</div>
+                <a class="skill-tag has-cert" href="Certifications/FANUC_CERT.pdf" target="_blank" rel="noopener" title="View FANUC HandlingTool certificate">Fanuc<span class="cert-badge">View certificate</span></a>
+                <a class="skill-tag has-cert" href="Certifications/FANUC_CERT.pdf" target="_blank" rel="noopener" title="View FANUC HandlingTool certificate">FANUC HandlingTool<span class="cert-badge">View certificate</span></a>
+                <div class="skill-tag">FANUC RoboGuide</div>
                 <div class="skill-tag">Robot Control Systems</div>
             </div>
 
@@ -504,6 +621,32 @@
                 <div class="skill-tag">Attention to Detail</div>
                 <div class="skill-tag">Creative Solutions</div>
                 <div class="skill-tag">Hard Working</div>
+            </div>
+
+            <h3 id="certifications">Certifications &amp; Training</h3>
+            <p style="margin-bottom: 1rem;">Click a certificate to view the PDF.</p>
+            <!-- To add a new certificate: upload the PDF to the Certifications folder, then copy one of the cards below and change the name, title, date and file link. -->
+            <div class="cert-list">
+                <a class="cert-card" href="Certifications/FANUC_CERT.pdf" target="_blank" rel="noopener">
+                    <strong>FANUC Academy</strong>
+                    <span>HandlingTool Operations &amp; Programming (4 Days, Virtual)</span>
+                    <span class="date">May 21, 2026 &middot; View certificate</span>
+                </a>
+                <a class="cert-card" href="Certifications/BECKHOFF_CERT.pdf" target="_blank" rel="noopener">
+                    <strong>Beckhoff E-Learning</strong>
+                    <span>TwinCAT 3: Getting Started</span>
+                    <span class="date">May 15, 2024 &middot; View certificate</span>
+                </a>
+                <a class="cert-card" href="Certifications/Certificate%20of%20Participation%20New%20Faculty%20Seminar%20.pdf" target="_blank" rel="noopener">
+                    <strong>New Faculty Seminar</strong>
+                    <span>Certificate of Participation</span>
+                    <span class="date">View certificate</span>
+                </a>
+                <div class="cert-card in-progress">
+                    <strong>FANUC CERT Instructor Certification</strong>
+                    <span>FANUC America</span>
+                    <span class="date">In progress</span>
+                </div>
             </div>
         </div>
     </section>
@@ -714,7 +857,7 @@
             
             <div class="education-item">
                 <h3>Bachelor of Science in Mechatronics Engineering</h3>
-                <p class="date">Utah Tech University - St. George, UT | Expected January 2026</p>
+                <p class="date">Utah Tech University - St. George, UT</p>
                 <p style="margin-top: 0.5rem;"><strong>Relevant Coursework:</strong> Industrial Networking, SCADA, Industrial Wiring, Robotics, Programmable Logic Controllers, Computer Aided Manufacturing, Computer Aided Design, Ladder Logic, Systems Design, Additive Manufacturing</p>
             </div>
 
@@ -725,8 +868,59 @@
 
             <h3 style="margin-top: 2rem;">Certifications</h3>
             <ul>
-                <li>Beckhoff Structured Text Certified</li>
+                <li><a href="Certifications/BECKHOFF_CERT.pdf" target="_blank" rel="noopener">Beckhoff E-Learning: TwinCAT 3: Getting Started (May 2024)</a></li>
+                <li><a href="Certifications/FANUC_CERT.pdf" target="_blank" rel="noopener">FANUC Academy: HandlingTool Operations &amp; Programming (May 2026)</a></li>
             </ul>
+        </div>
+    </section>
+
+<section id="documents">
+        <div class="content-box">
+            <h2>Documents</h2>
+            <p>Download my professional documents as PDFs.</p>
+
+            <div class="doc-grid">
+                <a class="doc-card" href="Documents/Porter_Cook_Resume.pdf" download>
+                    <strong>Resume</strong>
+                    <span>One-page summary of experience, projects, and skills</span>
+                    <span class="doc-dl">Download PDF</span>
+                </a>
+                <a class="doc-card" href="Documents/Porter_Cook_CV.pdf" download>
+                    <strong>Curriculum Vitae</strong>
+                    <span>Full professional and academic history</span>
+                    <span class="doc-dl">Download PDF</span>
+                </a>
+                <a class="doc-card" href="Documents/Porter_Cook_Cover_Letter.pdf" download>
+                    <strong>Cover Letter</strong>
+                    <span>Introduction and summary of qualifications</span>
+                    <span class="doc-dl">Download PDF</span>
+                </a>
+                <a class="doc-card" href="Documents/Porter_Cook_Teaching_Philosophy.pdf" download>
+                    <strong>Teaching Philosophy</strong>
+                    <span>Approach to teaching industrial robotics and automation</span>
+                    <span class="doc-dl">Download PDF</span>
+                </a>
+            </div>
+
+            <h3 id="references" style="margin-top: 2.5rem;">References</h3>
+            <p>Contact information for each reference is available on request.</p>
+            <div class="doc-grid">
+                <div class="ref-card">
+                    <strong>Seth Reed</strong>
+                    <span>Head Engineer, Project Dragonfly<br>Baxter Aerospace</span>
+                    <span class="ref-rel">Supervising engineer while I worked at Baxter Aerospace as a wiring technician and on automation systems.</span>
+                </div>
+                <div class="ref-card">
+                    <strong>Baylee S. Schumacher</strong>
+                    <span>Engineering Classmate and Project Partner<br>Utah Tech University</span>
+                    <span class="ref-rel">Project partner on final-course engineering work, including a BLDC motor for our regatta competition.</span>
+                </div>
+                <div class="ref-card">
+                    <strong>Chayse Thompson</strong>
+                    <span>Senior Capstone Partner, Mechanical Engineering<br>Utah Tech University</span>
+                    <span class="ref-rel">Mechanical engineering partner on my senior capstone project.</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -749,7 +943,7 @@
                     <strong>GitHub:</strong> github.com/porterrockwell
                 </div>
                 <div class="contact-item">
-                    <strong>Location:</strong> 46 W 200 N, Ivins, UT 84738
+                    <strong>Location:</strong> Ivins, UT
                 </div>
             </div>
             
